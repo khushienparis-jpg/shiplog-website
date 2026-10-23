@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+/* Wireframe palette: greyscale plus one accent reserved for primary buttons. */
+@theme {
+  --color-wf-bg: #ffffff;
+  --color-wf-fill: #f2f2f2;
+  --color-wf-box: #d9d9d9;
+  --color-wf-ink: #111111;
+  --color-wf-muted: #4d4d4d;
+  --color-accent: #3b5bfd;
+  --color-accent-dark: #2a47d8;
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-wf-bg);
+  color: var(--color-wf-ink);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  font-weight: 600;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

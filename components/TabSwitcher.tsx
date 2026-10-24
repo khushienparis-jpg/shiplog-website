@@ -42,7 +42,7 @@ export function TabSwitcher({ tabs, label }: { tabs: Tab[]; label: string }) {
               onClick={() => setActive(i)}
               onKeyDown={onKeyDown}
               className={`min-h-11 shrink-0 rounded-full border px-4 py-2 text-sm font-medium transition-colors ${
-                selected ? "border-wf-ink bg-wf-ink text-white" : "border-wf-box bg-wf-bg text-wf-ink hover:border-wf-ink"
+                selected ? "border-ink bg-ink text-white" : "border-line bg-white text-graphite hover:border-fog hover:text-ink"
               }`}
             >
               {tab.label}
@@ -58,7 +58,7 @@ export function TabSwitcher({ tabs, label }: { tabs: Tab[]; label: string }) {
           aria-labelledby={`${uid}-tab-${tab.id}`}
           hidden={i !== active}
           tabIndex={0}
-          className="mt-6"
+          className="mt-6 rounded-[20px]"
         >
           {tab.content}
         </div>

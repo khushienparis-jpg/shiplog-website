@@ -1,16 +1,54 @@
 @import "tailwindcss";
 
-/* Wireframe palette: greyscale plus one accent reserved for primary buttons. */
+/*
+ * Shiplog brand tokens (brand book, Oct 2026).
+ * The wf-* names are kept from the wireframe so every page picks up the brand
+ * without a rewrite: wf-bg is Paper, wf-fill is Mist, wf-box is Line,
+ * wf-ink is Ink, wf-muted is Stone, accent is Ink (primary buttons are Ink pills).
+ */
 @theme {
-  --color-wf-bg: #ffffff;
-  --color-wf-fill: #f2f2f2;
-  --color-wf-box: #d9d9d9;
-  --color-wf-ink: #111111;
-  --color-wf-muted: #4d4d4d;
-  --color-accent: #3b5bfd;
-  --color-accent-dark: #2a47d8;
+  /* Neutrals */
+  --color-ink: #0b0b0c;
+  --color-graphite: #2e2e33;
+  --color-stone: #6e6e78;
+  --color-fog: #a9a9b2;
+  --color-line: #e7e5e0;
+  --color-mist: #f4f3ef;
+  --color-paper: #fbfaf7;
+
+  /* Bloom colours and tints */
+  --color-sky: #4da3ff;
+  --color-sky-tint: #eaf4ff;
+  --color-iris: #6b5cff;
+  --color-iris-tint: #efedff;
+  --color-coral: #ff6a3d;
+  --color-coral-tint: #ffefea;
+  --color-mint: #2ec4a0;
+  --color-mint-tint: #e6f8f3;
+
+  /* Status */
+  --color-success: #0e8f6e;
+  --color-warning: #e59a1e;
+  --color-error: #e5484d;
+
+  /* Wireframe aliases mapped onto the brand */
+  --color-wf-bg: #fbfaf7;
+  --color-wf-fill: #f4f3ef;
+  --color-wf-box: #e7e5e0;
+  --color-wf-ink: #0b0b0c;
+  --color-wf-muted: #6e6e78;
+  --color-accent: #0b0b0c;
+  --color-accent-dark: #2e2e33;
+
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-serif: var(--font-instrument-serif), ui-serif, Georgia, serif;
+
+  --shadow-soft: 0 1px 2px rgba(11, 11, 12, 0.04), 0 12px 32px rgba(11, 11, 12, 0.06);
+
+  --ease-brand: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --default-transition-duration: 200ms;
+  --default-transition-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 html {
@@ -18,27 +56,124 @@ html {
 }
 
 body {
-  background: var(--color-wf-bg);
-  color: var(--color-wf-ink);
+  background: var(--color-paper);
+  color: var(--color-graphite);
   font-family: var(--font-sans);
+  font-size: 16px;
   line-height: 1.6;
 }
 
 h1,
 h2,
 h3 {
-  letter-spacing: -0.02em;
-  line-height: 1.15;
+  color: var(--color-ink);
   font-weight: 600;
+  line-height: 1.1;
+  text-wrap: balance;
+}
+h1 {
+  letter-spacing: -0.03em;
+}
+h2 {
+  letter-spacing: -0.02em;
+}
+h3 {
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+/* The one serif phrase per headline. */
+.serif-accent {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+::selection {
+  background: var(--color-iris-tint);
+  color: var(--color-ink);
 }
 
 :focus-visible {
-  outline: 3px solid var(--color-accent);
+  outline: 2px solid var(--color-iris);
   outline-offset: 2px;
+}
+
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: none;
+  border-color: var(--color-iris);
+  box-shadow: 0 0 0 3px var(--color-iris-tint);
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: var(--color-iris);
+}
+
+/* Dot grid at 4% Ink, behind diagrams and visuals. */
+.dot-grid {
+  background-image: radial-gradient(rgba(11, 11, 12, 0.04) 1.2px, transparent 1.2px);
+  background-size: 16px 16px;
+}
+
+/* The bloom gradient, once per page: the hero glow. */
+.bloom-glow {
+  background: linear-gradient(120deg, var(--color-sky), var(--color-iris), var(--color-coral));
+  filter: blur(90px);
+  opacity: 0.2;
+}
+
+/* Sections fade up 12px as they enter, once. */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.fade-up {
+  animation: fade-up 500ms var(--ease-brand) both;
+}
+@supports (animation-timeline: view()) {
+  .reveal {
+    animation: fade-up linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 35%;
+  }
+}
+
+/* The bloom loader: petals light up clockwise on an 800ms loop. */
+@keyframes petal {
+  0%,
+  25% {
+    fill: var(--petal);
+  }
+  30%,
+  100% {
+    fill: var(--color-line);
+  }
+}
+.bloom-loader path {
+  fill: var(--color-line);
+  animation: petal 800ms linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  .fade-up,
+  .reveal {
+    animation: none;
+  }
+  .bloom-loader path {
+    animation: none;
+    fill: var(--petal);
   }
 }

@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Button, Container } from "./ui";
+import { BloomSymbol } from "./Bloom";
 
 /** Every page ends with this Book a demo block. */
 export function CTASection({
@@ -12,15 +13,16 @@ export function CTASection({
   secondary?: { label: string; href: string };
 }) {
   return (
-    <section aria-label="Book a demo" className="bg-wf-bg py-16 sm:py-24">
+    <section aria-label="Book a demo" className="bg-paper py-12 sm:py-20">
       <Container>
-        <div className="rounded-3xl border-2 border-wf-ink px-6 py-12 text-center sm:px-12 sm:py-16">
-          <h2 className="mx-auto max-w-2xl text-[26px] sm:text-[32px]">{title}</h2>
-          {body ? <p className="mx-auto mt-4 max-w-xl text-wf-muted sm:text-[17px]">{body}</p> : null}
+        <div className="reveal dot-grid relative overflow-hidden rounded-[32px] bg-ink px-6 py-14 text-center sm:px-12 sm:py-20">
+          <div aria-hidden className="mx-auto mb-6 flex justify-center"><BloomSymbol size={28} variant="white" /></div>
+          <h2 className="mx-auto max-w-2xl text-[28px] text-white sm:text-[36px]">{title}</h2>
+          {body ? <p className="mx-auto mt-4 max-w-xl text-white/70 sm:text-lg">{body}</p> : null}
           <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <Button href="/demo/">Book a demo</Button>
+            <Button href="/demo/" className="!bg-white !text-ink hover:!bg-mist">Book a demo</Button>
             {secondary ? (
-              <Button href={secondary.href} variant="secondary">
+              <Button href={secondary.href} variant="secondary" className="!border-white/25 !bg-transparent !text-white hover:!border-white/60">
                 {secondary.label}
               </Button>
             ) : null}

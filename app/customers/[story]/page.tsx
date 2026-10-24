@@ -33,10 +33,10 @@ export default async function StoryPage({ params }: { params: Promise<{ story: s
   return (
     <>
       <Hero eyebrow="Customer story · AI SaaS company" title={story.h1} primary={{ label: "Book a demo", href: "/demo/" }}>
-        <dl className="mt-10 grid gap-4 rounded-2xl border border-wf-box bg-wf-bg p-6 sm:grid-cols-5">
+        <dl className="mt-10 grid gap-4 rounded-[20px] border border-line bg-white p-6 sm:grid-cols-5">
           {story.snapshot.map((s) => (
             <div key={s.label}>
-              <dt className="font-mono text-xs uppercase tracking-wider text-wf-muted">{s.label}</dt>
+              <dt className="font-mono text-xs uppercase tracking-[0.02em] text-stone">{s.label}</dt>
               <dd className="mt-1 font-medium">{s.value}</dd>
             </div>
           ))}
@@ -59,12 +59,12 @@ export default async function StoryPage({ params }: { params: Promise<{ story: s
       </Section>
 
       <Section label="The result">
-        <p className="font-mono text-xs uppercase tracking-wider text-wf-muted">The result</p>
+        <p className="font-mono text-xs uppercase tracking-[0.02em] text-stone">The result</p>
         <p className="mt-3 font-mono text-[40px] font-medium leading-none sm:text-[56px]">10 plan upgrades</p>
         <h2 className="mt-4 max-w-3xl text-[26px] sm:text-[32px]">A working expansion engine, without a new hire.</h2>
-        <figure className="mt-10 max-w-3xl rounded-2xl bg-wf-fill p-6 sm:p-8">
+        <figure className="mt-10 max-w-3xl rounded-[20px] bg-mist p-6 sm:p-8">
           <blockquote className="text-lg">
-            <span className="inline-block rounded bg-wf-box px-2 py-1 font-mono text-xs text-[#262626]">
+            <span className="inline-block rounded-full border border-dashed border-fog bg-white px-2.5 py-0.5 font-mono text-xs text-stone">
               [Quote: one sentence from the team]
             </span>
           </blockquote>

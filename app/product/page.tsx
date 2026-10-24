@@ -14,7 +14,7 @@ export default function ProductPage() {
     <>
       <Hero
         eyebrow="Product"
-        title="Personalisation from insight to action, in one place."
+        title="Personalisation from insight to action, in one place." accent="in one place"
         sub="Shiplog connects to the tools that know your customers and the tools that reach them. In between, AI agents decide what each customer needs next and take the action, while your team works on it together."
         primary={{ label: "Book a demo", href: "/demo/" }}
         secondary={{ label: "See how it works", href: "#how-it-works" }}
@@ -41,7 +41,7 @@ export default function ProductPage() {
               href: "#channels",
             },
           ].map((p) => (
-            <li key={p.title} className="flex flex-col rounded-2xl border border-wf-box p-6">
+            <li key={p.title} className="flex flex-col rounded-[20px] border border-line bg-white p-6">
               <h3 className="text-xl sm:text-[22px]">{p.title}</h3>
               <p className="mt-2 flex-1 text-wf-muted">{p.body}</p>
               <Link href={p.href} className="mt-4 font-medium underline underline-offset-4 hover:no-underline">

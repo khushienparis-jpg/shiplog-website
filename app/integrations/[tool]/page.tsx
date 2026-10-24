@@ -39,8 +39,8 @@ export default async function IntegrationPage({ params }: Props) {
       <Section label="What Shiplog does">
         <div className="grid gap-10 lg:grid-cols-2">
           <SectionHeading eyebrow="What Shiplog does" title={`${it.does}.`} />
-          <div className="rounded-2xl bg-wf-fill p-6 sm:p-8">
-            <p className="font-mono text-xs uppercase tracking-wider text-wf-muted">Example use case</p>
+          <div className="rounded-[20px] bg-mist p-6 sm:p-8">
+            <p className="font-mono text-xs uppercase tracking-[0.02em] text-stone">Example use case</p>
             <p className="mt-3 text-lg font-medium">{it.useCase}.</p>
             <Placeholder className="mt-6" label={`Campaign card: ${it.useCase.toLowerCase()}`} />
           </div>
@@ -48,7 +48,7 @@ export default async function IntegrationPage({ params }: Props) {
       </Section>
 
       <Section fill label="Setup">
-        <div className="max-w-3xl rounded-2xl border border-wf-box bg-wf-bg p-6 sm:p-8">
+        <div className="max-w-3xl rounded-[20px] border border-line bg-white p-6 sm:p-8">
           <h2 className="text-xl sm:text-[22px]">Connect in minutes.</h2>
           <p className="mt-3 text-wf-muted">
             Add your API key or sign in with OAuth, choose what Shiplog can read, and you&apos;re done. No engineering
@@ -56,7 +56,7 @@ export default async function IntegrationPage({ params }: Props) {
           </p>
           <ol className="mt-6 grid gap-3 sm:grid-cols-3">
             {["Add API key or sign in with OAuth", "Choose what Shiplog can read", "Done"].map((s, i) => (
-              <li key={s} className="rounded-lg bg-wf-fill p-4 font-mono text-xs">
+              <li key={s} className="rounded-[12px] bg-mist p-4 font-mono text-xs">
                 <span className="text-wf-muted">Step {i + 1}</span>
                 <span className="mt-1 block text-wf-ink">{s}</span>
               </li>

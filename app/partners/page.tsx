@@ -11,7 +11,7 @@ export default function PartnersPage() {
     <>
       <Hero
         eyebrow="Partners"
-        title="Better together with the tools you use."
+        title="Better together with the tools you use." accent="Better together"
         sub="Shiplog adds the intelligence layer to the platforms your customers already trust."
         primary={{ label: "Book a demo", href: "/demo/" }}
         secondary={{ label: "Become a partner", href: "/demo/" }}

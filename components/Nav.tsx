@@ -1,15 +1,16 @@
 "use client";
 
 import Link from "next/link";
+import { ChevronDown } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { navLinks } from "@/lib/content";
+import { Lockup } from "./Bloom";
 
 function Logo() {
   return (
-    <Link href="/" className="flex items-center gap-2 font-semibold" aria-label="Shiplog home">
-      <span aria-hidden className="h-6 w-6 rounded-md bg-wf-box" />
-      <span className="text-lg tracking-tight">Shiplog</span>
+    <Link href="/" className="flex min-h-11 items-center rounded-full" aria-label="Shiplog home">
+      <Lockup size={24} />
     </Link>
   );
 }
@@ -48,7 +49,7 @@ export function Nav() {
   const isActive = (href: string) => pathname === href || (href !== "/" && pathname.startsWith(href.replace(/\/$/, "")));
 
   return (
-    <header className="sticky top-0 z-40 border-b border-wf-box bg-wf-bg">
+    <header className="sticky top-0 z-40 border-b border-line bg-paper/85 backdrop-blur-md">
       <nav aria-label="Main" className="mx-auto flex h-16 max-w-[1200px] items-center justify-between gap-6 px-4 sm:px-6">
         <Logo />
         <ul className="hidden items-center gap-1 lg:flex">
@@ -60,24 +61,24 @@ export function Nav() {
                   aria-expanded={menuOpen}
                   aria-controls="usecases-menu"
                   onClick={() => setMenuOpen((o) => !o)}
-                  className={`flex min-h-11 items-center gap-1 rounded-md px-3 text-[15px] hover:bg-wf-fill ${
-                    pathname.startsWith("/use-cases") ? "font-semibold" : ""
+                  className={`flex min-h-11 items-center gap-1 rounded-full px-3 text-[15px] text-graphite hover:bg-mist hover:text-ink ${
+                    pathname.startsWith("/use-cases") ? "font-medium text-ink" : ""
                   }`}
                 >
                   {link.label}
-                  <span aria-hidden className="text-xs">▾</span>
+                  <ChevronDown aria-hidden size={14} strokeWidth={1.75} className={`transition-transform ${menuOpen ? "rotate-180" : ""}`} />
                 </button>
                 {menuOpen ? (
                   <ul
                     id="usecases-menu"
-                    className="absolute left-0 top-full mt-2 w-56 rounded-xl border border-wf-box bg-wf-bg p-2"
+                    className="absolute left-0 top-full mt-2 w-60 rounded-[20px] border border-line bg-white p-2 shadow-[var(--shadow-soft)]"
                   >
                     {link.children.map((child) => (
                       <li key={child.href}>
                         <Link
                           href={child.href}
                           aria-current={pathname === child.href ? "page" : undefined}
-                          className="flex min-h-11 items-center rounded-md px-3 text-[15px] hover:bg-wf-fill"
+                          className="flex min-h-11 items-center rounded-[12px] px-3 text-[15px] text-graphite hover:bg-mist hover:text-ink aria-[current=page]:bg-iris-tint aria-[current=page]:text-ink"
                         >
                           {child.label}
                         </Link>
@@ -91,8 +92,8 @@ export function Nav() {
                 <Link
                   href={link.href}
                   aria-current={isActive(link.href) ? "page" : undefined}
-                  className={`flex min-h-11 items-center rounded-md px-3 text-[15px] hover:bg-wf-fill ${
-                    isActive(link.href) ? "font-semibold" : ""
+                  className={`flex min-h-11 items-center rounded-full px-3 text-[15px] text-graphite hover:bg-mist hover:text-ink ${
+                    isActive(link.href) ? "font-medium text-ink" : ""
                   }`}
                 >
                   {link.label}
@@ -104,13 +105,13 @@ export function Nav() {
         <div className="flex items-center gap-2">
           <Link
             href="/demo/"
-            className="hidden min-h-11 items-center rounded-lg bg-accent px-4 text-[15px] font-medium text-white hover:bg-accent-dark sm:inline-flex"
+            className="hidden h-11 items-center rounded-full bg-ink px-5 text-[15px] font-medium text-white transition-colors hover:bg-graphite sm:inline-flex"
           >
             Book a demo
           </Link>
           <button
             type="button"
-            className="flex min-h-11 items-center rounded-md border border-wf-ink px-3 text-sm font-medium lg:hidden"
+            className="flex h-11 items-center rounded-full border border-line bg-white px-4 text-sm font-medium text-ink lg:hidden"
             aria-expanded={mobileOpen}
             aria-controls="mobile-menu"
             onClick={() => setMobileOpen((o) => !o)}
@@ -120,17 +121,17 @@ export function Nav() {
         </div>
       </nav>
       {mobileOpen ? (
-        <div id="mobile-menu" className="border-t border-wf-box bg-wf-bg lg:hidden">
+        <div id="mobile-menu" className="border-t border-line bg-paper lg:hidden">
           <ul className="mx-auto max-w-[1200px] space-y-1 px-4 py-4 sm:px-6">
             {navLinks.map((link) => (
               <li key={link.label}>
                 {link.children ? (
                   <>
-                    <p className="px-3 pb-1 pt-3 font-mono text-xs uppercase tracking-wider text-wf-muted">{link.label}</p>
+                    <p className="px-3 pb-1 pt-3 font-mono text-xs uppercase tracking-[0.02em] text-stone">{link.label}</p>
                     <ul>
                       {link.children.map((child) => (
                         <li key={child.href}>
-                          <Link href={child.href} className="flex min-h-11 items-center rounded-md px-3 hover:bg-wf-fill">
+                          <Link href={child.href} className="flex min-h-11 items-center rounded-[12px] px-3 text-graphite hover:bg-mist hover:text-ink">
                             {child.label}
                           </Link>
                         </li>
@@ -138,7 +139,7 @@ export function Nav() {
                     </ul>
                   </>
                 ) : (
-                  <Link href={link.href} className="flex min-h-11 items-center rounded-md px-3 hover:bg-wf-fill">
+                  <Link href={link.href} className="flex min-h-11 items-center rounded-[12px] px-3 text-graphite hover:bg-mist hover:text-ink">
                     {link.label}
                   </Link>
                 )}
@@ -147,7 +148,7 @@ export function Nav() {
             <li className="pt-3">
               <Link
                 href="/demo/"
-                className="flex min-h-11 items-center justify-center rounded-lg bg-accent px-4 font-medium text-white"
+                className="flex h-11 items-center justify-center rounded-full bg-ink px-4 font-medium text-white"
               >
                 Book a demo
               </Link>

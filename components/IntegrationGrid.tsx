@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { Plug } from "lucide-react";
 import { integrationCategories, integrations } from "@/lib/content";
 
 export function IntegrationGrid() {
@@ -17,7 +18,7 @@ export function IntegrationGrid() {
             aria-pressed={filter === c}
             onClick={() => setFilter(c)}
             className={`min-h-11 rounded-full border px-4 text-sm font-medium ${
-              filter === c ? "border-wf-ink bg-wf-ink text-white" : "border-wf-box hover:border-wf-ink"
+              filter === c ? "border-ink bg-ink text-white" : "border-line bg-white text-graphite hover:border-fog hover:text-ink"
             }`}
           >
             {c}
@@ -32,17 +33,17 @@ export function IntegrationGrid() {
           <li key={i.slug}>
             <Link
               href={`/integrations/${i.slug}/`}
-              className="flex h-full flex-col rounded-2xl border border-wf-box p-5 hover:border-wf-ink"
+              className="flex h-full flex-col rounded-[20px] border border-line bg-white p-5 transition-shadow hover:shadow-[var(--shadow-soft)]"
             >
               <span
                 aria-hidden
-                className="flex h-12 w-12 items-center justify-center rounded-lg bg-wf-box font-mono text-[10px] text-[#262626]"
+                className="flex h-12 w-12 items-center justify-center rounded-[12px] border border-line bg-mist text-stone"
               >
-                [Logo]
+                <Plug size={20} strokeWidth={1.5} />
               </span>
-              <span className="mt-4 font-semibold">{i.name}</span>
-              <span className="mt-1 font-mono text-xs text-wf-muted">{i.category}</span>
-              <span className="mt-3 text-sm text-wf-muted">{i.does}</span>
+              <span className="mt-4 font-semibold text-ink">{i.name}</span>
+              <span className="mt-1 font-mono text-xs text-stone">{i.category}</span>
+              <span className="mt-3 text-sm text-graphite">{i.does}</span>
             </Link>
           </li>
         ))}

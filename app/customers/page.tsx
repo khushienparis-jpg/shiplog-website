@@ -32,7 +32,7 @@ export default function CustomersPage() {
     <>
       <Hero
         eyebrow="Customers"
-        title="Revenue found in customer bases like yours."
+        title="Revenue found in customer bases like yours." accent="like yours"
         sub="Our customers stay anonymous. Their numbers don't."
         primary={{ label: "Book a demo", href: "/demo/" }}
       />

@@ -11,7 +11,7 @@ export default function IntegrationsPage() {
     <>
       <Hero
         eyebrow="Integrations"
-        title="Works with your stack."
+        title="Works with your stack." accent="your stack"
         sub="Shiplog reads from the tools that hold your customer data and sends through the tools that reach your customers. Most teams connect in a day."
         primary={{ label: "Book a demo", href: "/demo/" }}
       />

@@ -13,7 +13,7 @@ export default function EnterprisePage() {
     <>
       <Hero
         eyebrow="Enterprise"
-        title="Deep customer intelligence, across every account."
+        title="Deep customer intelligence, across every account." accent="every account"
         sub="Shiplog gives enterprise teams a live understanding of every customer and the next best action for each, delivered through the systems you already run."
         primary={{ label: "Talk to us", href: "/demo/" }}
         secondary={{ label: "Get your audit", href: "#audit" }}
@@ -73,7 +73,7 @@ export default function EnterprisePage() {
         <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {["SOC 2 audit in progress", "Human approval on every campaign", "Read only access by default", "Disconnect at any time"].map(
             (t) => (
-              <li key={t} className="rounded-2xl border border-wf-box bg-wf-bg p-5 font-medium">
+              <li key={t} className="rounded-[20px] border border-line bg-white p-5 font-medium">
                 {t}
               </li>
             ),
@@ -85,7 +85,7 @@ export default function EnterprisePage() {
       </Section>
 
       <Section id="audit" label="Start with an audit">
-        <div className="rounded-3xl bg-wf-fill p-6 sm:p-10">
+        <div className="rounded-[32px] bg-mist p-6 sm:p-10">
           <SectionHeading
             title="Start with an audit."
             body="In two weeks, we'll show you where revenue leaks from your customer base and what it's worth. No commitment beyond that."

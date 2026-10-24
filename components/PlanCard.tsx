@@ -1,3 +1,4 @@
+import { Check } from "lucide-react";
 import { Button } from "./ui";
 
 export function PlanCard({
@@ -15,17 +16,17 @@ export function PlanCard({
 }) {
   return (
     <article
-      className={`flex h-full flex-col rounded-2xl border bg-wf-bg p-6 sm:p-8 ${highlight ? "border-2 border-wf-ink" : "border-wf-box"}`}
+      className={`flex h-full flex-col rounded-[20px] border bg-white p-6 sm:p-8 ${highlight ? "border-iris shadow-[var(--shadow-soft)] ring-2 ring-iris-tint" : "border-line"}`}
     >
       <h2 className="text-xl sm:text-[22px]">{name}</h2>
-      <p className="mt-2 text-wf-muted">{tagline}</p>
-      <div className="mt-6 rounded-lg bg-wf-box px-4 py-3 font-mono text-xs text-[#262626]">
+      <p className="mt-2 text-graphite">{tagline}</p>
+      <div className="mt-6 rounded-[12px] border border-dashed border-fog bg-mist px-4 py-3 font-mono text-xs text-stone">
         [Price or &quot;Custom&quot;: decide before launch]
       </div>
       <ul className="mt-6 flex-1 space-y-3">
         {includes.map((item) => (
           <li key={item} className="flex gap-3">
-            <span aria-hidden className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-wf-ink" />
+            <Check aria-hidden size={16} strokeWidth={1.75} className="mt-1 shrink-0 text-iris" />
             {item}
           </li>
         ))}

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useCases } from "@/lib/content";
+import { Lockup } from "./Bloom";
 
 type FooterItem = { label: string; href?: string };
 
@@ -42,15 +43,15 @@ const columns: { title: string; items: FooterItem[] }[] = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-wf-box bg-wf-fill">
+    <footer className="border-t border-line bg-mist">
       <div className="mx-auto max-w-[1200px] px-4 py-16 sm:px-6">
         <div className="grid gap-10 lg:grid-cols-[1.2fr_3fr]">
           <div>
-            <p className="text-lg font-semibold">Shiplog</p>
-            <p className="mt-2 text-wf-muted">No code personalisation for every team.</p>
+            <Lockup size={22} />
+            <p className="mt-3 text-stone">Personalisation your growth team can run on its own.</p>
             <form className="mt-8" aria-label="Newsletter" action="#">
-              <p className="font-semibold">Get one playbook a week.</p>
-              <p className="mt-1 text-sm text-wf-muted">Campaigns that work, from the teams who ran them.</p>
+              <p className="font-semibold text-ink">Get one playbook a week.</p>
+              <p className="mt-1 text-sm text-stone">Campaigns that work, from the teams who ran them.</p>
               <div className="mt-4 flex flex-col gap-2 sm:flex-row">
                 <label htmlFor="newsletter-email" className="sr-only">
                   Email
@@ -59,9 +60,9 @@ export function Footer() {
                   id="newsletter-email"
                   type="email"
                   placeholder="Email"
-                  className="min-h-11 flex-1 rounded-lg border border-[#8c8c8c] bg-wf-bg px-3"
+                  className="h-11 flex-1 rounded-[12px] border border-line bg-white px-3 placeholder:text-fog"
                 />
-                <button type="submit" className="min-h-11 rounded-lg border border-wf-ink px-4 font-medium hover:bg-wf-bg">
+                <button type="submit" className="h-11 rounded-full bg-ink px-5 font-medium text-white transition-colors hover:bg-graphite">
                   Subscribe
                 </button>
               </div>
@@ -70,16 +71,16 @@ export function Footer() {
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5">
             {columns.map((col) => (
               <nav key={col.title} aria-label={`Footer ${col.title}`}>
-                <p className="font-mono text-xs uppercase tracking-wider text-wf-muted">{col.title}</p>
+                <p className="font-mono text-xs font-medium uppercase tracking-[0.02em] text-stone">{col.title}</p>
                 <ul className="mt-4 space-y-2 text-[15px]">
                   {col.items.map((item) => (
                     <li key={item.label}>
                       {item.href ? (
-                        <Link href={item.href} className="hover:underline">
+                        <Link href={item.href} className="text-graphite hover:text-ink">
                           {item.label}
                         </Link>
                       ) : (
-                        <span className="text-wf-muted" title="Not part of this wireframe">
+                        <span className="text-fog" title="Not part of this wireframe">
                           {item.label}
                         </span>
                       )}
@@ -90,7 +91,7 @@ export function Footer() {
             ))}
           </div>
         </div>
-        <div className="mt-12 flex flex-col gap-2 border-t border-wf-box pt-6 text-sm text-wf-muted sm:flex-row sm:justify-between">
+        <div className="mt-12 flex flex-col gap-2 border-t border-line pt-6 text-sm text-stone sm:flex-row sm:justify-between">
           <p>© 2026 Shiplog, Inc. Built at Station F, Paris.</p>
           <p className="flex gap-4">
             <span>LinkedIn</span>

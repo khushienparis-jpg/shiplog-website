@@ -11,7 +11,7 @@ export default function CareersPage() {
     <>
       <Hero
         eyebrow="Careers"
-        title="Help every company understand every customer."
+        title="Help every company understand every customer." accent="every customer"
         sub="We're a small team at Station F, shipping fast and working directly with customers every week."
       />
       <Section label="How we work">
@@ -27,7 +27,7 @@ export default function CareersPage() {
       </Section>
       <Section fill label="Open roles">
         <SectionHeading title="Open roles" />
-        <div className="mt-8 rounded-2xl border border-dashed border-[#9e9e9e] bg-wf-box p-6 font-mono text-xs text-[#262626]">
+        <div className="mt-8 rounded-[20px] border border-dashed border-fog bg-mist p-6 font-mono text-xs text-stone">
           [Role list from your ATS]
         </div>
         <p className="mt-6">No open roles right now, but we always want to meet exceptional people.</p>

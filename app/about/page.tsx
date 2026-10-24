@@ -18,7 +18,7 @@ const team = [
 export default function AboutPage() {
   return (
     <>
-      <Hero eyebrow="About" title="We're building the layer that understands every customer." />
+      <Hero eyebrow="About" title="We're building the layer that understands every customer." accent="every customer" />
 
       <Section label="Why we exist">
         <SectionHeading
@@ -70,7 +70,7 @@ export default function AboutPage() {
           {backers.map((b) => (
             <li
               key={b}
-              className="flex h-16 items-center justify-center rounded-xl bg-wf-box px-2 text-center font-mono text-xs text-[#262626]"
+              className="flex h-16 items-center justify-center rounded-[12px] bg-mist px-2 text-center font-mono text-xs text-stone"
             >
               [Logo: {b}]
             </li>
@@ -80,7 +80,7 @@ export default function AboutPage() {
       </Section>
 
       <Section label="Careers">
-        <div className="flex flex-col items-start gap-4 rounded-2xl border border-wf-box p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
+        <div className="flex flex-col items-start gap-4 rounded-[20px] border border-line bg-white p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
           <h2 className="text-xl sm:text-[22px]">Want to build this with us?</h2>
           <Button href="/careers/" variant="secondary">
             See open roles

@@ -4,7 +4,7 @@ import { Hero } from "@/components/Hero";
 import { Placeholder } from "@/components/Placeholder";
 import { SectionHeading } from "@/components/SectionHeading";
 import { CTASection } from "@/components/CTASection";
-import { BulletList, Section } from "@/components/ui";
+import { BulletList, Section, StageTag } from "@/components/ui";
 import { useCases } from "@/lib/content";
 
 export function generateStaticParams() {
@@ -39,7 +39,7 @@ export default async function UseCasePage({ params }: Props) {
 
       <Section label="The leak">
         <div className="max-w-3xl">
-          <p className="font-mono text-xs uppercase tracking-wider text-wf-muted">The leak</p>
+          <p className="font-mono text-xs uppercase tracking-[0.02em] text-stone">The leak</p>
           <h2 className="mt-3 text-[26px] sm:text-[32px]">{uc.leak}</h2>
         </div>
       </Section>
@@ -51,24 +51,24 @@ export default async function UseCasePage({ params }: Props) {
 
       <Section label="Example campaign">
         <SectionHeading eyebrow="Example campaign" title={uc.example ?? uc.result ?? uc.signal} />
-        <div className="mt-10 grid gap-6 rounded-3xl border border-wf-box p-6 sm:p-8 lg:grid-cols-4">
+        <div className="mt-10 grid gap-6 rounded-[32px] border border-line bg-white p-6 sm:p-8 lg:grid-cols-4">
           <div>
-            <p className="font-mono text-xs uppercase tracking-wider text-wf-muted">Signal</p>
+            <p><StageTag stage="signal">Signal</StageTag></p>
             <p className="mt-2 font-medium">{uc.signal}</p>
           </div>
           <div>
-            <p className="font-mono text-xs uppercase tracking-wider text-wf-muted">Decision</p>
+            <p><StageTag stage="decision">Decision</StageTag></p>
             <p className="mt-2">{uc.decision}</p>
           </div>
           <div>
-            <p className="font-mono text-xs uppercase tracking-wider text-wf-muted">Message</p>
+            <p><StageTag stage="action">Message</StageTag></p>
             <Placeholder className="mt-2" ratio="aspect-[4/3]" label={`Message: ${uc.action.toLowerCase()}`} />
           </div>
           <div>
-            <p className="font-mono text-xs uppercase tracking-wider text-wf-muted">Result</p>
+            <p><StageTag stage="result">Result</StageTag></p>
             <p className="mt-2">
               {uc.result ?? (
-                <span className="inline-block rounded bg-wf-box px-2 py-1 font-mono text-xs text-[#262626]">
+                <span className="inline-block rounded-full border border-dashed border-fog bg-white px-2.5 py-0.5 font-mono text-xs text-stone">
                   [Result: number to confirm]
                 </span>
               )}

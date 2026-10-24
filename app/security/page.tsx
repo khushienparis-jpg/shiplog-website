@@ -18,7 +18,7 @@ export default function SecurityPage() {
     <>
       <Hero
         eyebrow="Security"
-        title="Your customer data, handled with care."
+        title="Your customer data, handled with care." accent="with care"
         sub="Shiplog works with sensitive customer data every day. Here's how we protect it."
         primary={{ label: "Book a demo", href: "/demo/" }}
       />
@@ -26,10 +26,10 @@ export default function SecurityPage() {
         <h2 className="sr-only">How we protect data</h2>
         <ul className="grid gap-4 md:grid-cols-2">
           {items.map((it) => (
-            <li key={it.title} className="rounded-2xl border border-wf-box p-6">
+            <li key={it.title} className="rounded-[20px] border border-line bg-white p-6">
               <h3 className="text-lg font-semibold">{it.title}</h3>
               {it.placeholder ? (
-                <p className="mt-2 inline-block rounded bg-wf-box px-2 py-1 font-mono text-xs text-[#262626]">[{it.body}]</p>
+                <p className="mt-2 inline-block rounded-full border border-dashed border-fog bg-white px-2.5 py-0.5 font-mono text-xs text-stone">[{it.body}]</p>
               ) : (
                 <p className="mt-2 text-wf-muted">{it.body}</p>
               )}

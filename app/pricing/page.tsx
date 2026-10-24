@@ -14,7 +14,7 @@ export default function PricingPage() {
     <>
       <Hero
         eyebrow="Pricing"
-        title="Priced on the value, not the seats."
+        title="Priced on the value, not the seats." accent="not the seats"
         sub="Every plan is month to month. Start with the one that fits your team today and grow from there."
       />
       <Section label="Plans">

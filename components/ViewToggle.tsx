@@ -13,7 +13,7 @@ export function ViewToggle({
   const current = options[active];
   return (
     <div>
-      <div role="group" aria-label="Choose a view" className="inline-flex rounded-full border border-wf-ink p-1">
+      <div role="group" aria-label="Choose a view" className="inline-flex rounded-full border border-line bg-white p-1">
         {options.map((opt, i) => (
           <button
             key={opt.label}
@@ -21,7 +21,7 @@ export function ViewToggle({
             aria-pressed={i === active}
             onClick={() => setActive(i)}
             className={`min-h-11 rounded-full px-4 py-2 text-sm font-medium ${
-              i === active ? "bg-wf-ink text-white" : "text-wf-ink hover:bg-wf-fill"
+              i === active ? "bg-ink text-white" : "text-graphite hover:bg-mist hover:text-ink"
             }`}
           >
             {opt.label}
@@ -30,7 +30,7 @@ export function ViewToggle({
       </div>
       <div className="mt-6" aria-live="polite">
         <Placeholder label={current.placeholder} ratio="aspect-[4/3] sm:aspect-[21/9]" />
-        <p className="mt-3 font-mono text-xs text-wf-muted">{current.caption}</p>
+        <p className="mt-3 font-mono text-xs text-stone">{current.caption}</p>
       </div>
     </div>
   );

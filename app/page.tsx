@@ -1,4 +1,6 @@
+import { Code, Database, Palette } from "lucide-react";
 import { Hero } from "@/components/Hero";
+import { HeroCampaignCard } from "@/components/HeroCampaignCard";
 import { Placeholder } from "@/components/Placeholder";
 import { SectionHeading } from "@/components/SectionHeading";
 import { StatRow } from "@/components/StatRow";
@@ -8,7 +10,7 @@ import { TabSwitcher } from "@/components/TabSwitcher";
 import { ViewToggle } from "@/components/ViewToggle";
 import { StoryCard } from "@/components/StoryCard";
 import { CTASection } from "@/components/CTASection";
-import { BulletList, Button, Section, TextLink } from "@/components/ui";
+import { BulletList, Button, Section, StageTag, TextLink } from "@/components/ui";
 import { backers, useCases } from "@/lib/content";
 
 export default function Home() {
@@ -19,13 +21,14 @@ export default function Home() {
         display
         eyebrow="Personalisation for growth teams"
         title="Personalisation your growth team can run on its own."
+        accent="on its own"
         sub="No engineers. No data team. No design team. Shiplog finds what each customer needs next, designs the message and sends it through the tools you already use."
         primary={{ label: "Book a demo", href: "/demo/" }}
         secondary={{ label: "Watch it build a campaign", href: "#how-it-works" }}
-        placeholder="Hero demo: paste a website URL, an on brand campaign builds itself"
+        visual={<HeroCampaignCard />}
         includeClaim={false}
       >
-        <div className="mt-8 border-t border-wf-box pt-6" aria-label="Proof">
+        <div className="mt-14 sm:mt-20" aria-label="Proof">
           <StatRow
             stats={[
               { value: "5+", label: "companies live within six weeks of launch" },
@@ -33,7 +36,7 @@ export default function Home() {
               { value: "7 figures", label: "of expansion revenue found in one customer base" },
             ]}
           />
-          <p className="mt-6 text-sm text-wf-muted">
+          <p className="mt-8 text-sm text-stone">
             Backed by Kima Ventures, Project Europe, Purple, No Label Ventures, 100IN and the Station F Fund. Part of
             F/AI at Station F.
           </p>
@@ -41,7 +44,7 @@ export default function Home() {
             {backers.map((b) => (
               <li
                 key={b}
-                className="flex h-12 items-center justify-center rounded-lg bg-wf-box px-2 text-center font-mono text-[11px] text-[#262626]"
+                className="flex h-12 items-center justify-center rounded-[12px] border border-line bg-white px-2 text-center font-mono text-[11px] text-stone"
               >
                 [Logo: {b}]
               </li>
@@ -52,41 +55,48 @@ export default function Home() {
 
       {/* 3. Three teams you don't need */}
       <Section label="Three teams you don't need">
-        <SectionHeading eyebrow="Three teams you don't need" title="Your growth team ships it. Start to finish." />
+        <SectionHeading eyebrow="Three teams you don't need" title="Your growth team ships it. Start to finish." accent="Start to finish." />
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           {[
             {
               title: "No engineers",
+              Icon: Code,
               before: "Tickets to add tracking and build in app messages",
               after: "Connect your tools in a few clicks. In app messages are ready to go",
             },
             {
               title: "No data team",
+              Icon: Database,
               before: "SQL, segments and models before anything sends",
               after: "Agents decide who gets what, every day, from live data",
             },
             {
               title: "No design team",
+              Icon: Palette,
               before: "A designer for every email and banner",
               after: "Every message is on brand, built from your website",
             },
           ].map((col) => (
-            <article key={col.title} className="rounded-2xl border border-wf-box p-6">
-              <h3 className="text-xl sm:text-[22px]">{col.title}</h3>
+            <article key={col.title} className="rounded-[20px] border border-line bg-white p-6">
+              <span aria-hidden className="relative flex h-10 w-10 items-center justify-center rounded-[12px] border border-line bg-mist text-stone">
+                <col.Icon size={20} strokeWidth={1.5} />
+                <span className="absolute h-[1.5px] w-7 rotate-45 rounded-full bg-stone" />
+              </span>
+              <h3 className="mt-5 text-xl sm:text-[22px]">{col.title}</h3>
               <dl className="mt-5 space-y-4">
                 <div>
-                  <dt className="font-mono text-xs uppercase tracking-wider text-wf-muted">What it used to take</dt>
+                  <dt className="font-mono text-xs uppercase tracking-[0.02em] text-stone">What it used to take</dt>
                   <dd className="mt-1 text-wf-muted line-through decoration-1">{col.before}</dd>
                 </div>
-                <div className="rounded-lg bg-wf-fill p-4">
-                  <dt className="font-mono text-xs uppercase tracking-wider text-wf-muted">With Shiplog</dt>
+                <div className="rounded-[12px] bg-mint-tint p-4">
+                  <dt className="font-mono text-xs uppercase tracking-[0.02em] text-stone">With Shiplog</dt>
                   <dd className="mt-1 font-medium">{col.after}</dd>
                 </div>
               </dl>
             </article>
           ))}
         </div>
-        <p className="mt-8 text-lg font-medium">One growth marketer with Shiplog does what used to take three teams.</p>
+        <p className="mt-10 text-lg font-medium text-ink">One growth marketer with Shiplog does what used to take three teams.</p>
       </Section>
 
       {/* 4. How it works */}
@@ -120,6 +130,7 @@ export default function Home() {
         <SectionHeading
           eyebrow="Actions, not predictions"
           title="Other tools predict. Shiplog acts."
+          accent="Shiplog acts."
           body="Churn scores, health dashboards and propensity models tell you who might leave. Then someone still has to decide what to do, write it, design it and send it. Shiplog does all of it: it finds the customer, picks the action, builds a beautiful on brand message and runs it, with your approval."
         />
         <div className="mt-10 grid gap-6 md:grid-cols-2">
@@ -151,25 +162,25 @@ export default function Home() {
               label: u.tabLabel,
               content: (
                 <div className="grid gap-6 lg:grid-cols-[1fr_1.2fr]">
-                  <div className="rounded-2xl border border-wf-box bg-wf-bg p-6">
+                  <div className="rounded-[20px] border border-line bg-white p-6">
                   <dl className="space-y-4">
                     <div>
-                      <dt className="font-mono text-xs uppercase tracking-wider text-wf-muted">Signal</dt>
-                      <dd className="mt-1 font-medium">{u.signal}</dd>
+                      <dt><StageTag stage="signal" /></dt>
+                      <dd className="mt-2 font-medium text-ink">{u.signal}</dd>
                     </div>
                     <div>
-                      <dt className="font-mono text-xs uppercase tracking-wider text-wf-muted">Decision</dt>
-                      <dd className="mt-1">{u.decision}</dd>
+                      <dt><StageTag stage="decision" /></dt>
+                      <dd className="mt-2">{u.decision}</dd>
                     </div>
                     <div>
-                      <dt className="font-mono text-xs uppercase tracking-wider text-wf-muted">Action</dt>
-                      <dd className="mt-1">{u.action}</dd>
+                      <dt><StageTag stage="action" /></dt>
+                      <dd className="mt-2">{u.action}</dd>
                     </div>
                     <div>
-                      <dt className="font-mono text-xs uppercase tracking-wider text-wf-muted">Result</dt>
-                      <dd className="mt-1">
+                      <dt><StageTag stage="result" /></dt>
+                      <dd className="mt-2">
                         {u.result ?? (
-                          <span className="inline-block rounded bg-wf-box px-2 py-1 font-mono text-xs text-[#262626]">
+                          <span className="inline-block rounded-full border border-dashed border-fog bg-white px-2.5 py-0.5 font-mono text-xs text-stone">
                             [Result: number to confirm]
                           </span>
                         )}
@@ -211,7 +222,7 @@ export default function Home() {
             label="Customer profile assembling itself from product, billing, CRM and support signals, ending in a needs next line"
           />
         </div>
-        <div className="mt-16 rounded-3xl bg-wf-fill p-6 sm:p-10">
+        <div className="mt-16 rounded-[32px] bg-mist p-6 sm:p-10">
           <SectionHeading
             as="h3"
             title="Segments treat 1,000 customers like one. Shiplog treats them like 1,000."
@@ -245,6 +256,7 @@ export default function Home() {
           />
           <SectionHeading
             eyebrow="Multiplayer"
+            accent="a team sport."
             title="Personalisation is a team sport."
             body="Growth, CS, product and sales all touch the same customers. In Shiplog they work in one place: see the same customer, suggest plays, review copy and approve together. No more spreadsheets passed between teams, and no customer getting three different messages in one week."
           />
@@ -262,7 +274,7 @@ export default function Home() {
           {["Salesforce", "HubSpot", "Snowflake", "Stripe", "PostHog", "Shopify", "Customer.io", "Claude"].map((t) => (
             <li
               key={t}
-              className="flex h-16 items-center justify-center rounded-xl border border-wf-box bg-wf-fill font-mono text-xs text-[#262626]"
+              className="flex h-16 items-center justify-center rounded-[12px] border border-line bg-white font-mono text-xs text-stone"
             >
               [Logo: {t}]
             </li>

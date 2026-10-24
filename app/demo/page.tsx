@@ -7,11 +7,11 @@ export const metadata: Metadata = { title: "Book a demo | Shiplog" };
 
 export default function DemoPage() {
   return (
-    <section className="bg-wf-fill py-12 sm:py-20">
+    <section className="bg-mist py-12 sm:py-20">
       <Container>
         <div className="max-w-3xl">
-          <p className="font-mono text-xs uppercase tracking-wider text-wf-muted">Book a demo</p>
-          <h1 className="mt-3 text-[34px] sm:text-[48px]">See what your customers need next.</h1>
+          <p className="font-mono text-xs uppercase tracking-[0.02em] text-stone">Book a demo</p>
+          <h1 className="mt-3 text-[36px] sm:text-[52px]">See what your customers need <span className="serif-accent">next.</span></h1>
           <p className="mt-5 text-lg text-wf-muted sm:text-xl">
             In 30 minutes we&apos;ll walk through your customer journey, show you where revenue leaks, and how Shiplog
             would close the gaps.
@@ -19,10 +19,10 @@ export default function DemoPage() {
           <PositioningStrip />
         </div>
         <div className="mt-12 grid gap-8 lg:grid-cols-[1.6fr_1fr]">
-          <div className="rounded-3xl bg-wf-bg p-6 sm:p-10">
+          <div className="rounded-[32px] bg-white p-6 sm:p-10">
             <DemoForm />
           </div>
-          <aside className="h-fit rounded-3xl border border-wf-box bg-wf-bg p-6 sm:p-8" aria-labelledby="get-heading">
+          <aside className="h-fit rounded-[32px] border border-line bg-white p-6 sm:p-8" aria-labelledby="get-heading">
             <h2 id="get-heading" className="text-xl sm:text-[22px]">
               What you&apos;ll get
             </h2>
@@ -38,7 +38,7 @@ export default function DemoPage() {
                 </li>
               ))}
             </ul>
-            <p className="mt-8 border-t border-wf-box pt-5 text-sm text-wf-muted">
+            <p className="mt-8 border-t border-line pt-5 text-sm text-wf-muted">
               Backed by Kima Ventures, Project Europe and the Station F Fund.
             </p>
           </aside>

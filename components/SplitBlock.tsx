@@ -45,7 +45,7 @@ export function SubPoints({ items }: { items: { title: string; body: string }[] 
       {items.map((it) => (
         <div key={it.title}>
           <h3 className="text-lg font-semibold sm:text-xl">{it.title}</h3>
-          <p className="mt-1 text-wf-muted">{it.body}</p>
+          <p className="mt-1 text-graphite">{it.body}</p>
         </div>
       ))}
     </div>

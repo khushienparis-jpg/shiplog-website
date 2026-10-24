@@ -1,6 +1,6 @@
 # Shiplog website wireframe
 
-Clickable, low fidelity wireframe of the new Shiplog marketing site. Greyscale boxes, real headlines, real structure. The point is to review layout, page flow and section order before visual design.
+Clickable wireframe of the new Shiplog marketing site with the brand book applied. Real headlines, real structure, brand colours, type and shape. Visuals that are not designed yet are labelled slots.
 
 - Copy source: [docs/copy.md](docs/copy.md) (export of "Shiplog website copy")
 - Brand source: [docs/brand.md](docs/brand.md) (export of "Shiplog brand book")
@@ -21,14 +21,18 @@ npm run build      # static export to ./out
 
 The site is a static export (`output: "export"` in `next.config.ts`), so it also runs on any static host.
 
-## Wireframe rules used
+## Brand layer
 
-- Greyscale only: `#FFFFFF` background, `#F2F2F2` section fills, `#D9D9D9` boxes, `#111` text.
-- One accent, `#3B5BFD`, only on primary buttons, so the Book a demo path is easy to follow.
-- Every visual is a grey box with a label, for example `[Customer profile assembling itself from product, billing, CRM and support signals]`.
-- Every hero carries a positioning strip: no engineers, no data team, no design team, built on deep customer intelligence, actions not predictions, multiplayer.
-- Every page ends with a Book a demo section (except `/demo` and `/thanks`, where it would be circular).
-- No dashes in visible copy, British English, no customer names or logos, every page under 12 sections. A Playwright check enforces the dash, section count and broken link rules.
+The wireframe now wears the Shiplog brand book (Oct 23, 2026, see `docs/brand.md`). Structure, copy and routes are unchanged.
+
+- Tokens in `app/globals.css`: 8 neutrals (Ink to White), 4 bloom colours with tints (Sky, Iris, Coral, Mint), status colours, the soft shadow and the motion curve. The old `wf-*` names are aliases onto the brand so every page picks it up.
+- Type: Geist for display and UI, Instrument Serif italic for one phrase per headline (`accent` prop on `Hero` and `SectionHeading`), Geist Mono for labels and numbers.
+- Shape: pill buttons and tags, 12 px inputs, 20 px cards, 32 px panels. Primary buttons are Ink pills; Iris is the only bloom colour used for text (links) and focus.
+- Logo: `components/Bloom.tsx` draws the bloom to the construction rules (two quarter circles per petal, rounded outer tip, hairline centre gap), plus the lockup and the bloom loader. The wordmark is set in Geist Bold until the master SVG is supplied. Favicon is the Ink symbol (`app/icon.svg`).
+- One bloom gradient glow per page, in the hero. Petal colours tag each stage (Signal, Decision, Action, Result) wherever the loop appears.
+- Visuals still to design are White cards with the dot grid and a mono label saying what goes there. The homepage hero uses a static campaign card built from the brand book UI sample.
+- Icons are Lucide, outline, 1.5 px stroke.
+- Sections fade up 12 px on scroll where the browser supports scroll driven animation; reduced motion gets a static page.
 
 ## Routes
 

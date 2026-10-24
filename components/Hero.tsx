@@ -18,13 +18,14 @@ export function PositioningStrip({ includeClaim = true }: { includeClaim?: boole
     "Multiplayer",
   ];
   return (
-    <div className="mt-6 rounded-xl border border-wf-box bg-wf-bg p-3" aria-label="Positioning">
-      {includeClaim ? (
-        <p className="text-sm font-medium">Personalisation your growth team can run on its own.</p>
-      ) : null}
-      <ul className={`${includeClaim ? "mt-2" : ""} flex flex-wrap gap-1.5`}>
+    <div className="mt-8" aria-label="Positioning">
+      {includeClaim ? <p className="text-sm font-medium text-ink">Personalisation your growth team can run on its own.</p> : null}
+      <ul className={`${includeClaim ? "mt-3" : ""} flex flex-wrap gap-1.5`}>
         {chips.map((chip) => (
-          <li key={chip} className="rounded-full bg-wf-fill px-2.5 py-0.5 font-mono text-[11px] text-wf-ink sm:text-xs">
+          <li
+            key={chip}
+            className="rounded-full border border-line bg-white px-2.5 py-1 font-mono text-[11px] font-medium text-graphite sm:text-xs"
+          >
             {chip}
           </li>
         ))}
@@ -33,37 +34,67 @@ export function PositioningStrip({ includeClaim = true }: { includeClaim?: boole
   );
 }
 
+/** Renders the title with one phrase in the serif italic, if `accent` is found in it. */
+export function AccentTitle({ title, accent }: { title: string; accent?: string }) {
+  if (!accent || !title.includes(accent)) return <>{title}</>;
+  const [before, ...rest] = title.split(accent);
+  return (
+    <>
+      {before}
+      <span className="serif-accent">{accent}</span>
+      {rest.join(accent)}
+    </>
+  );
+}
+
 export function Hero({
   eyebrow,
   title,
+  accent,
   sub,
   primary,
   secondary,
   placeholder,
+  visual,
   display = false,
   children,
   includeClaim = true,
 }: {
   eyebrow?: string;
   title: string;
+  /** One phrase of the title set in Instrument Serif italic. */
+  accent?: string;
   sub?: ReactNode;
   primary?: Cta;
   secondary?: Cta;
   placeholder?: string;
+  /** A designed visual. Wins over `placeholder`. */
+  visual?: ReactNode;
   display?: boolean;
   children?: ReactNode;
   includeClaim?: boolean;
 }) {
+  const hasVisual = Boolean(visual || placeholder);
   return (
-    <section className="bg-wf-fill pb-12 pt-10 sm:pb-16 sm:pt-14">
-      <Container>
-        <div className={`grid items-center gap-10 ${placeholder ? "lg:grid-cols-[1.15fr_1fr]" : ""}`}>
-          <div className={placeholder ? "" : "max-w-3xl"}>
+    <section className="relative overflow-hidden bg-paper pb-14 pt-12 sm:pb-20 sm:pt-20">
+      {/* The one bloom gradient moment on the page. */}
+      <div aria-hidden className="bloom-glow pointer-events-none absolute -top-72 right-[-12%] h-[480px] w-[720px] rounded-full" />
+      <Container className="relative">
+        <div className={`grid items-center gap-12 ${hasVisual ? "lg:grid-cols-[1.1fr_1fr]" : ""}`}>
+          <div className={`fade-up ${hasVisual ? "" : "max-w-3xl"}`}>
             {eyebrow ? <Eyebrow>{eyebrow}</Eyebrow> : null}
-            <h1 className={`mt-3 ${display ? "text-[40px] sm:text-[52px] min-[1400px]:text-[64px]" : "text-[34px] sm:text-[48px]"}`}>{title}</h1>
-            {sub ? <div className="mt-4 text-lg text-wf-muted sm:text-xl">{sub}</div> : null}
+            <h1
+              className={`mt-4 ${
+                display
+                  ? "text-[44px] tracking-[-0.035em] sm:text-[60px] min-[1280px]:text-[72px]"
+                  : "text-[36px] sm:text-[52px]"
+              }`}
+            >
+              <AccentTitle title={title} accent={accent} />
+            </h1>
+            {sub ? <div className="mt-5 max-w-[34em] text-lg text-graphite sm:text-xl">{sub}</div> : null}
             {primary || secondary ? (
-              <div className="mt-6 flex flex-wrap gap-3">
+              <div className="mt-8 flex flex-wrap gap-3">
                 {primary ? <Button href={primary.href}>{primary.label}</Button> : null}
                 {secondary ? (
                   <Button href={secondary.href} variant="secondary">
@@ -74,7 +105,11 @@ export function Hero({
             ) : null}
             <PositioningStrip includeClaim={includeClaim} />
           </div>
-          {placeholder ? <Placeholder label={placeholder} ratio="aspect-[4/3]" /> : null}
+          {visual ? (
+            <div className="fade-up [animation-delay:120ms]">{visual}</div>
+          ) : placeholder ? (
+            <Placeholder label={placeholder} ratio="aspect-[4/3]" className="fade-up [animation-delay:120ms]" />
+          ) : null}
         </div>
         {children}
       </Container>

@@ -25,7 +25,7 @@ export function HeroCampaignCard() {
 
         <div className="mt-3 flex items-center gap-2 px-1 font-mono text-xs text-stone">
           <BloomLoader size={14} label="Building" />
-          Reading 142 accounts from product and billing data
+          Ada is reading 142 accounts from PostHog and HubSpot
         </div>
 
         {/* Campaign card */}

@@ -59,6 +59,8 @@ export function Hero({
   display = false,
   children,
   includeClaim = true,
+  showStrip = true,
+  note,
 }: {
   eyebrow?: string;
   title: string;
@@ -73,6 +75,10 @@ export function Hero({
   display?: boolean;
   children?: ReactNode;
   includeClaim?: boolean;
+  /** Hide the positioning strip when the page copy carries its own proof line. */
+  showStrip?: boolean;
+  /** Small line under the buttons. */
+  note?: ReactNode;
 }) {
   const hasVisual = Boolean(visual || placeholder);
   return (
@@ -103,7 +109,8 @@ export function Hero({
                 ) : null}
               </div>
             ) : null}
-            <PositioningStrip includeClaim={includeClaim} />
+            {note ? <p className="mt-5 font-mono text-xs text-stone">{note}</p> : null}
+            {showStrip ? <PositioningStrip includeClaim={includeClaim} /> : null}
           </div>
           {visual ? (
             <div className="fade-up [animation-delay:120ms]">{visual}</div>

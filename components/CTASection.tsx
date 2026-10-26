@@ -7,10 +7,14 @@ export function CTASection({
   title = "See what your customers need next.",
   body = "Bring your website. In 30 minutes, we'll build your first campaign live.",
   secondary,
+  ctaLabel = "Book a demo",
+  ctaHref = "/demo/",
 }: {
   title?: string;
   body?: ReactNode;
   secondary?: { label: string; href: string };
+  ctaLabel?: string;
+  ctaHref?: string;
 }) {
   return (
     <section aria-label="Book a demo" className="bg-paper py-12 sm:py-20">
@@ -20,7 +24,7 @@ export function CTASection({
           <h2 className="mx-auto max-w-2xl text-[28px] text-white sm:text-[36px]">{title}</h2>
           {body ? <p className="mx-auto mt-4 max-w-xl text-white/70 sm:text-lg">{body}</p> : null}
           <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <Button href="/demo/" className="!bg-white !text-ink hover:!bg-mist">Book a demo</Button>
+            <Button href={ctaHref} className="!bg-white !text-ink hover:!bg-mist">{ctaLabel}</Button>
             {secondary ? (
               <Button href={secondary.href} variant="secondary" className="!border-white/25 !bg-transparent !text-white hover:!border-white/60">
                 {secondary.label}
